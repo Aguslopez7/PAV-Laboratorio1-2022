@@ -1,6 +1,10 @@
 #ifndef JUGADOR
 #define JUGADOR
 
+#include <iostream>
+
+using namespace std;
+
 class Jugador{
     private:
         int password;
@@ -16,5 +20,6 @@ class Jugador{
         int getEdad();
         string getNickname();
         ~Jugador();
-}
+};
+
 #endif

@@ -1,28 +1,26 @@
 #include "Juego.h"
 
 Juego::Juego(){}
-Juego::Juego(Genero TipoGenero,string nombre){
-    this->TipoGenero=TipoGenero;
 
+Juego::Juego(TipoJuego genero,string nombre){
+    this->genero=genero;
     this->nombre=nombre;
 }
 
-void Juego:: setTipoGenero(TipoGenero genero){
-    this->TipoGenero=TipoGenero;
+void Juego::setGenero(TipoJuego genero){
+    this->genero=genero;
 }
 
 void Juego:: setNombre(string nombre){
     this->nombre=nombre;
 }
 
-TipoGenero Juego:: getTipoGenero(){
-    return this->TipoGenero;
+TipoJuego Juego:: getGenero(){
+    return this->genero;
 }
-
 
 string Juego:: getNombre(){
     return this->nombre;
 }
 
 Juego::~Juego(){}
-

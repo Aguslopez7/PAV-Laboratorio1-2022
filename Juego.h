@@ -1,17 +1,22 @@
 #ifndef JUEGO
 #define JUEGO
 
+#include <iostream>
+
+using namespace std;
+
 class Juego{
     private:
         TipoJuego genero;
         string nombre;
     public:
         Juego();
-        Juego(genero TipoJuego ,string nombre);
-        void setTipoJuego(TipoJuego genero);
+        Juego(TipoJuego genero,string nombre);
+        void setGenero(TipoJuego genero);
         void setNombre(string nombre);
-        int getTipoJuego();
+        TipoJuego getGenero();
         string getNombre();
         ~Juego();
-}
+};
+
 #endif
