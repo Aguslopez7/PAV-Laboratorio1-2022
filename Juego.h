@@ -2,19 +2,20 @@
 #define JUEGO
 
 #include <iostream>
+#include "TipoGenero.h"
 
 using namespace std;
 
 class Juego{
     private:
-        TipoJuego genero;
+        TipoGenero genero;
         string nombre;
     public:
         Juego();
-        Juego(TipoJuego genero,string nombre);
-        void setGenero(TipoJuego genero);
+        Juego(TipoGenero genero,string nombre);
+        void setGenero(TipoGenero genero);
         void setNombre(string nombre);
-        TipoJuego getGenero();
+        TipoGenero getGenero();
         string getNombre();
         ~Juego();
 };

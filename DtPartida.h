@@ -1,9 +1,11 @@
-#ifndef DTDtPartida
-#define DTDtPartida
+#ifndef DTPARTIDA
+#define DTPARTIDA
+
 #include <string>
 #include <iostream>
+#include "DtFechaHora.h"
+
 using namespace std;
-#include "DtfechaHora.h"
 
 class DtPartida {
   private:
@@ -12,11 +14,11 @@ class DtPartida {
   public:
     DtPartida();
     DtPartida(DtFechaHora fecha, int duracion);
-    string getFecha();
+    DtFechaHora getFecha();
     void setFecha(DtFechaHora fecha);
     int getDuracion();
     void setDuracion(int duracion);
     ~DtPartida();
-
 };
+
 #endif

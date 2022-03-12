@@ -2,12 +2,12 @@
 
 Juego::Juego(){}
 
-Juego::Juego(TipoJuego genero,string nombre){
+Juego::Juego(TipoGenero genero,string nombre){
     this->genero=genero;
     this->nombre=nombre;
 }
 
-void Juego::setGenero(TipoJuego genero){
+void Juego::setGenero(TipoGenero genero){
     this->genero=genero;
 }
 
@@ -15,7 +15,7 @@ void Juego:: setNombre(string nombre){
     this->nombre=nombre;
 }
 
-TipoJuego Juego:: getGenero(){
+TipoGenero Juego:: getGenero(){
     return this->genero;
 }
 

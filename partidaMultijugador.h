@@ -1,7 +1,9 @@
 #ifndef PARTIDAIMULTIJUGADOR
 #define PARTIDAIMULTIJUGADOR
+
 #include "Partida.h"
-class PartidaMultijugador  : public Partida{
+
+class PartidaMultijugador : public Partida{
   private:
     bool trasmitidaEnVivo;
   public:
@@ -10,6 +12,7 @@ class PartidaMultijugador  : public Partida{
     bool gettrasmitidaEnVivo();
     void settrasmitidaEnVivo(bool trasmitidaEnVivo);
     ~PartidaMultijugador ();
-    int darTotalHorasParticipantes();
+    void darTotalHorasParticipantes();
 };
+
 #endif

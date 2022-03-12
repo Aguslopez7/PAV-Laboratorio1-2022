@@ -1,8 +1,10 @@
 #ifndef PARTIDAINVIDIUAL
 #define PARTIDAINVIDIUAL
+
 #include "Partida.h"
 #include "DtPartidaIndividual.h"
-class PartidaIndividual  : public Partida{
+
+class PartidaIndividual : public Partida{
   private:
     bool continuaPartidaAnterior;
   public:
@@ -10,7 +12,8 @@ class PartidaIndividual  : public Partida{
     PartidaIndividual (bool continuaPartidaAnterior);
     bool getContinuaPartidaAnterior();
     void setContinuaPartidaAnterior(bool continuaPartidaAnterior);
+    void darTotalHorasParticipantes();
     ~PartidaIndividual ();
-    int darTotalHorasParticipantes();
 };
+
 #endif
