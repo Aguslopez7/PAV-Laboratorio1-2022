@@ -1,9 +1,9 @@
-#include "PartidaMultijugador.h"
+#include "partidaMultijugador.h"
 
 PartidaMultijugador::PartidaMultijugador(){}
 
-PartidaMultijugador::PartidaMultijugador(bool trasmitidaEnVivo):Lugar(fecha,duracion){
-  this->continuaPartidaAnterior=continuaPartidaAnterior;
+PartidaMultijugador::PartidaMultijugador(DtFechaHora* fecha, int duracion, int cantJugadores, bool trasmitidaEnVivo):Partida(fecha,duracion,cantJugadores){
+  this->trasmitidaEnVivo=trasmitidaEnVivo;
 }
 
 bool PartidaMultijugador::getTrasmitidaEnVivo(){
@@ -15,6 +15,7 @@ void PartidaMultijugador::setTrasmitidaEnVivo(bool trasmitidaEnVivo){
 }
 
 int PartidaMultijugador::darTotalHorasParticipantes(){
+  return 0;
 }
 
 PartidaMultijugador::~PartidaMultijugador(){}

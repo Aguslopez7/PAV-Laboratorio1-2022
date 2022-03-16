@@ -8,11 +8,11 @@ class PartidaMultijugador : public Partida{
     bool trasmitidaEnVivo;
   public:
     PartidaMultijugador ();
-    PartidaMultijugador (bool trasmitidaEnVivo);
-    bool gettrasmitidaEnVivo();
-    void settrasmitidaEnVivo(bool trasmitidaEnVivo);
+    PartidaMultijugador (DtFechaHora* fecha, int duracion, int cantJugadores, bool trasmitidaEnVivo);
+    bool getTrasmitidaEnVivo();
+    void setTrasmitidaEnVivo(bool trasmitidaEnVivo);
     ~PartidaMultijugador ();
-    void darTotalHorasParticipantes();
+    int darTotalHorasParticipantes();
 };
 
 #endif

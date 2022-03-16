@@ -1,8 +1,8 @@
-#include "PartidaIndividual.h"
+#include "partidaIndividual.h"
 
 PartidaIndividual::PartidaIndividual(){}
 
-PartidaIndividual::PartidaIndividual(bool continuaPartidaAnterior):Lugar(fecha,duracion){
+PartidaIndividual::PartidaIndividual(DtFechaHora* fecha, int duracion, int cantJugadores, bool continuaPartidaAnterior):Partida(fecha,duracion,cantJugadores){
   this->continuaPartidaAnterior=continuaPartidaAnterior;
 }
 
@@ -15,6 +15,7 @@ void PartidaIndividual::setContinuaPartidaAnterior(bool continuaPartidaAnterior)
 }
 
 int PartidaIndividual::darTotalHorasParticipantes(){
+  return 0;
 }
 
 PartidaIndividual::~PartidaIndividual (){}
