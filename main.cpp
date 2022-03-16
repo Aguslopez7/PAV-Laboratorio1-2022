@@ -1,6 +1,8 @@
 #include "DtJugador.h"
 #include "Jugador.h"
+#include "Juego.h"
 #include "Definiciones.h"
+#include "TipoGenero.h"
 #include <iostream>
 #include <unistd.h>
 
@@ -14,9 +16,18 @@ struct jugadores
   int tope;
 } colJugadores;
 
-/********** Menu Agregar Jugador **********/
+struct juego
+{
+  Juego *j[MAX_VIDEOJUEGOS];
+  int tope;
+} colJuegos;
+
+/********** Definiciones de Operaciones **********/
 
 void agregarJugador(int password, int edad, string nickname);
+void agregarVideoJuego(TipoGenero genero,string nombre);
+
+/********** Menu Agregar Jugador **********/
 
 void menuAgregarJugador()
 {
@@ -43,7 +54,7 @@ void menuAgregarJugador()
   }
 }
 
-/********** Definir Operacion Agregar Jugador **********/
+/********** Implementar Operacion Agregar Jugador **********/
 
 void agregarJugador(int password, int edad, string nickname)
 {
@@ -62,7 +73,64 @@ void agregarJugador(int password, int edad, string nickname)
   }
 }
 
-void menuAgregarVideojuego() {}
+/********** Menu Agregar Juego **********/
+
+void menuAgregarVideojuego()
+{
+  system("clear");
+  cout << "╔════════════════════════════════════════════╗\n";
+  cout << COLOR_SB << "║           ♦ 👾 Agregar Videojuego ♦           ║" << COLOR_RESET << endl;
+  cout << "╚════════════════════════════════════════════╝\n";
+  TipoGenero genero;
+  string nombre;
+  int type;
+  cout << "Genero:\n\t1. ACCION\n\t2. AVENTURA\n\t3. DEPORTE\n\t4. OTRO\n\tOpcion: => ";
+  cin >> type;
+  switch (type){
+    case 1:
+      genero=ACCION;
+      break;
+    case 2:
+      genero= AVENTURA;
+      break;
+    case 3:
+      genero= DEPORTE;
+      break;
+    case 4:
+      genero= OTRO;
+      break;
+  }
+  cout << "► Nombre: ";
+  cin >> nombre;
+  try
+  {
+    agregarVideoJuego(genero, nombre);
+  }
+  catch (invalid_argument &e)
+  {
+    cout << "\n" << COLOR_Y << e.what() << COLOR_RESET << endl;
+    system("sleep 3");
+  }
+}
+
+/********** Implementar Operacion Agregar Juego **********/
+
+void agregarVideoJuego(TipoGenero genero,string nombre)
+{
+  int i = 0;
+  while (i < colJuegos.tope && colJuegos.j[i]->getNombre() != nombre)
+    i++;
+  if (i == colJuegos.tope)
+  {
+    Juego *juego = new Juego(genero, nombre);
+    colJuegos.j[colJuegos.tope] = juego;
+    colJuegos.tope++;
+  }
+  else
+  {
+    throw invalid_argument("Ya existe un juego con ese nombre!");
+  }
+}
 
 /********** Menu Principal (Consola) **********/
 
@@ -111,7 +179,7 @@ int main()
     case 2:
       menuAgregarVideojuego();
       break;
-    }
+}
     menu();
     cin >> opcion;
   }
