@@ -2,7 +2,7 @@
 
 PartidaIndividual::PartidaIndividual(){}
 
-PartidaIndividual::PartidaIndividual(DtFechaHora* fecha, int duracion, int cantJugadores, bool continuaPartidaAnterior):Partida(fecha,duracion,cantJugadores){
+PartidaIndividual::PartidaIndividual(DtFechaHora* fecha, int duracion, bool continuaPartidaAnterior):Partida(fecha,duracion){
   this->continuaPartidaAnterior=continuaPartidaAnterior;
 }
 
@@ -15,7 +15,7 @@ void PartidaIndividual::setContinuaPartidaAnterior(bool continuaPartidaAnterior)
 }
 
 int PartidaIndividual::darTotalHorasParticipantes(){
-  return 0;
+  return getDuracion();
 }
 
 PartidaIndividual::~PartidaIndividual (){}

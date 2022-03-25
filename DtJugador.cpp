@@ -1,4 +1,5 @@
 #include "DtJugador.h"
+#include "Definiciones.h"
 
 DtJugador::DtJugador(){}
 DtJugador::DtJugador(int edad, string nickname){
@@ -23,3 +24,12 @@ string DtJugador:: getNickname(){
 }
 
 DtJugador::~DtJugador(){}
+
+ostream &operator<<(ostream &salida, const DtJugador &dtJugador) {
+    salida << "┌─────────────────────────────────────┐" << endl
+           << COLOR_SB << "♦ Nickname: " << COLOR_RESET << dtJugador.nickname << endl
+           << COLOR_SB << "♦ Edad: " << COLOR_RESET << dtJugador.edad << endl
+           << COLOR_SB << "♦ Estado: " << COLOR_RESET << COLOR_LG << "⦿ Online"<< COLOR_RESET << endl
+           << "└─────────────────────────────────────┘";
+    return salida;
+}

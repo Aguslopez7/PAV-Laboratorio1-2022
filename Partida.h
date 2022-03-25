@@ -11,16 +11,13 @@ class Partida {
   private:
     DtFechaHora* fecha;
     int duracion;
-    int cantJugadores;
   public:
     Partida();
-    Partida(DtFechaHora* fecha, int duracion, int cantJugadores);
+    Partida(DtFechaHora* fecha, int duracion);
     DtFechaHora* getFecha();
     void setFecha(DtFechaHora* fecha);
     int getDuracion();
     void setDuracion(int duracion);
-    int getCantidadJugadores();
-    void setCantidadJugadores(int cantJugadores);
     ~Partida();
     virtual int darTotalHorasParticipantes()=0;
 };

@@ -31,5 +31,10 @@ string Jugador:: getNickname(){
     return this->nickname;
 }
 
+DtJugador *Jugador:: getDtJugador(){
+    DtJugador *dt = new DtJugador(this->edad, this->nickname);
+    return dt;
+}
+
 Jugador::~Jugador(){}
 

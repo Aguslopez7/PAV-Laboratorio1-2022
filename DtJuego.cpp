@@ -1,4 +1,5 @@
 #include "DtJuego.h"
+#include "Definiciones.h"
 
 DtJuego::DtJuego(){}
 
@@ -33,3 +34,14 @@ int DtJuego:: getTotalHorasDeJuego(){
 }
 
 DtJuego::~DtJuego(){}
+
+ostream& operator <<(ostream& salida, const DtJuego& dtJuego)
+{
+    string g[4]={"ACCION","AVENTURA","DEPORTE","OTRO"};	
+    salida << "┌──────────────────────────────────────┐" << endl
+           << COLOR_SB << "♦ Genero: " << COLOR_RESET << g[dtJuego.genero] << endl
+           << COLOR_SB << "♦ Nombre: " << COLOR_RESET << dtJuego.nombre << endl
+           << COLOR_SB << "♦ Total de Horas Jugadas: " << COLOR_RESET << dtJuego.totalHorasDeJuego << endl
+           << "└──────────────────────────────────────┘";
+    return salida;
+}

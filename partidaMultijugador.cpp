@@ -2,8 +2,10 @@
 
 PartidaMultijugador::PartidaMultijugador(){}
 
-PartidaMultijugador::PartidaMultijugador(DtFechaHora* fecha, int duracion, int cantJugadores, bool trasmitidaEnVivo):Partida(fecha,duracion,cantJugadores){
+PartidaMultijugador::PartidaMultijugador(DtFechaHora* fecha, int duracion, int cantJugadores, bool trasmitidaEnVivo):Partida(fecha,duracion){
   this->trasmitidaEnVivo=trasmitidaEnVivo;
+  this->cantJugadores=cantJugadores;
+
 }
 
 bool PartidaMultijugador::getTrasmitidaEnVivo(){
@@ -15,7 +17,16 @@ void PartidaMultijugador::setTrasmitidaEnVivo(bool trasmitidaEnVivo){
 }
 
 int PartidaMultijugador::darTotalHorasParticipantes(){
-  return 0;
+  return getDuracion()*this->cantJugadores;
 }
+
+int PartidaMultijugador::getCantidadJugadores(){
+  return this->cantJugadores;
+}
+
+void PartidaMultijugador::setCantidadJugadores(int cantJugadores){
+  this->cantJugadores=cantJugadores;
+}
+
 
 PartidaMultijugador::~PartidaMultijugador(){}

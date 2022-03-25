@@ -17,6 +17,7 @@ class DtJugador{
         int getEdad();
         string getNickname();
         ~DtJugador();
+        friend ostream& operator <<(ostream&, const DtJugador&);
 };
 
 #endif

@@ -20,7 +20,8 @@ class DtJuego{
         TipoGenero getGenero();
         string getNombre();
         int getTotalHorasDeJuego();
-        ~DtJuego();       
+        ~DtJuego();    
+        friend ostream& operator <<(ostream&, const DtJuego&);   
 };
 
 #endif

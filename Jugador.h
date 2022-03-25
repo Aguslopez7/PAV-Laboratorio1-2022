@@ -2,6 +2,9 @@
 #define JUGADOR
 
 #include <iostream>
+#include "DtJugador.h"
+#include "Definiciones.h"
+#include "Partida.h"
 
 using namespace std;
 
@@ -10,6 +13,8 @@ class Jugador{
         int password;
         int edad;
         string nickname;
+        Partida* partidas[MAX_PARTIDAS];
+        int topePartidaJ;
     public:
         Jugador();
         Jugador(int password, int edad, string nickname);
@@ -19,6 +24,7 @@ class Jugador{
         int getPassword();
         int getEdad();
         string getNickname();
+        DtJugador *getDtJugador();
         ~Jugador();
 };
 
