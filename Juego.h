@@ -17,7 +17,7 @@ class Juego{
         int topePartidaVJ;
     public:
         Juego();
-        Juego(TipoGenero genero,string nombre);
+        Juego(string nombre, TipoGenero genero);
         void setGenero(TipoGenero genero);
         void setNombre(string nombre);
         TipoGenero getGenero();

@@ -65,12 +65,12 @@ void Sistema::agregarJugador(int password, int edad, string nickname)
 
 /** Implementar Operacion Agregar Juego **/
 
-void Sistema::agregarVideoJuego(TipoGenero genero,string nombre)
+void Sistema::agregarVideoJuego(string nombre, TipoGenero genero)
 {  
   if(checkingNombre(nombre)){
     throw invalid_argument("│ 🔔 Ya existe un videojuego con ese nombre! │");
   }
-  Juego *juego = new Juego(genero, nombre);
+  Juego *juego = new Juego(nombre, genero);
   juegos[topeJuego] = juego;
   topeJuego++;
   
@@ -100,6 +100,21 @@ DtJuego** Sistema::obtenerVideoJuegos(int& topeJuegos){
   return losdts;
 }
 
+/** Implementar Operacion Obtener Partidas **/
+/*
+DtPartida** Sistema::obtenerPartidas(string videojuego, int& cantPartidas){
+  cantPartidas=this->topePartida;
+  if(!checkingNombre(videojuego)){
+     throw invalid_argument("│ 🔔 No existe un videojuego con ese nombre! │");
+  }
+  DtPartida** losdts=new DtPartida*[cantPartidas];
+  for(int i=0; i<cantPartidas; i++){
+    DtPartida* dt= this->partida[i]->getDtPartida();
+    losdts[i]=dt;
+  }
+  return losdts;
+}
+*/
 /** Implentar Operacion Iniciar Partida **/
 
 void Sistema::iniciarPartida(string nickname, string nombre, DtPartida* datos)
@@ -117,7 +132,6 @@ void Sistema::iniciarPartida(string nickname, string nombre, DtPartida* datos)
                 DtBarcoPesquero* dtpesq = new DtBarcoPesquero(pesq->getId(),pesq->getNombre(),pesq->getCapacidad(),pesq->getCarga());
                 barcos[i]=dtpesq;
 */
-
 }
 
 /** Implementar Operacion Cargar Datos de Prueba **/
@@ -129,8 +143,8 @@ void Sistema::cargarDatosPredeterminados()
   agregarJugador(6584, 15, "xXHunterXx");
   agregarJugador(12564, 12, "pepe");
 
-  // agregarVideoJuego(TipoGenero genero,string nombre)
-  agregarVideoJuego(ACCION, "Cod");
-  agregarVideoJuego(AVENTURA, "TombRider");
-  agregarVideoJuego(ACCION, "gta");
+  // agregarVideoJuego(string nombre, TipoGenero genero)
+  agregarVideoJuego("Cod", ACCION);
+  agregarVideoJuego("TombRider", AVENTURA);
+  agregarVideoJuego("gta", ACCION);
 } 

@@ -22,6 +22,10 @@ int Partida::getDuracion(){
 void Partida::setDuracion(int duracion){
   this->duracion=duracion;
 }
-
-
+/*
+DtPartida* Partida::getDtPartida(){
+  DtPartida *dt = new DtPartida(fecha, this->duracion);
+  return dt;
+}
+*/
 Partida::~Partida(){}
