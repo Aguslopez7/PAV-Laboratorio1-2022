@@ -10,13 +10,13 @@ using namespace std;
 
 Sistema::Sistema(){
   this->topeJugadores=0;
-  this->topeJuego=0;
+  this->topeJuegos=0;
 }
 
 /** Implementar Get Tope Juego **/
 
-int Sistema::getTopeJuego(){
-  return this->topeJuego;
+int Sistema::getTopeJuegos(){
+  return this->topeJuegos;
 }
 
 /** Implementar Get Tope Jugadores **/
@@ -43,9 +43,9 @@ bool Sistema::checkingNickname(string nickname)
 bool Sistema::checkingNombre(string nombre)
 {
   int i=0;
-  while ( i < this->topeJuego && this->juegos[i]->getNombre() != nombre)
+  while ( i < this->topeJuegos && this->juegos[i]->getNombre() != nombre)
       i++;
-  if (i != topeJuego)
+  if (i != topeJuegos)
     return true;
   else 
     return false;
@@ -71,15 +71,14 @@ void Sistema::agregarVideoJuego(string nombre, TipoGenero genero)
     throw invalid_argument("│ 🔔 Ya existe un videojuego con ese nombre! │");
   }
   Juego *juego = new Juego(nombre, genero);
-  juegos[topeJuego] = juego;
-  topeJuego++;
+  juegos[topeJuegos] = juego;
+  topeJuegos++;
   
 }
 
 /** Implementar Operacion Obtener Juegadores **/
 
 DtJugador** Sistema::obtenerJugadores(int& topeJugadores){
-  topeJugadores= this->topeJugadores;
   DtJugador** losdts=new DtJugador*[topeJugadores];
   for(int i=0; i<topeJugadores; i++){
     DtJugador* dt= this->jugadores[i]->getDtJugador();
@@ -91,9 +90,8 @@ DtJugador** Sistema::obtenerJugadores(int& topeJugadores){
 /** Implementar Operacion Obtener VideoJuegos **/
 
 DtJuego** Sistema::obtenerVideoJuegos(int& topeJuegos){
-  topeJuego= this->topeJuego;
-  DtJuego** losdts=new DtJuego*[topeJuego];
-  for(int i=0; i<topeJuego; i++){
+  DtJuego** losdts=new DtJuego*[topeJuegos];
+  for(int i=0; i<topeJuegos; i++){
     DtJuego* dt= this->juegos[i]->getDtVideoJuego();
     losdts[i]=dt;
   }
@@ -141,10 +139,12 @@ void Sistema::cargarDatosPredeterminados()
   // agregarJugador(int password, int edad, string nickname);
   agregarJugador(1523, 12, "JuanKiller");
   agregarJugador(6584, 15, "xXHunterXx");
-  agregarJugador(12564, 12, "pepe");
+  agregarJugador(12564, 12, "elpepe");
+  agregarJugador(3545, 27, "YonitaPla");
 
   // agregarVideoJuego(string nombre, TipoGenero genero)
-  agregarVideoJuego("Cod", ACCION);
+  agregarVideoJuego("CarlosDutty", ACCION);
   agregarVideoJuego("TombRider", AVENTURA);
-  agregarVideoJuego("gta", ACCION);
+  agregarVideoJuego("Fifa", DEPORTE);
+  agregarVideoJuego("GTA", OTRO);
 } 

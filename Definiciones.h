@@ -1,6 +1,11 @@
-
 #ifndef DEFINICIONES
 #define DEFINICIONES
+
+using namespace std;
+
+//Variables de Foramto
+extern string longTab;
+extern string longSpace;
 
 //Colores
 #define COLOR_G "\033[32m"

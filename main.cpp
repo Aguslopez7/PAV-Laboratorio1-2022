@@ -12,8 +12,8 @@
 
 using namespace std;
 
-string longTab;
-string longSpace;
+string longTab="";
+string longSpace="";
 string closeBarSpace;
 float progress;
 
@@ -54,7 +54,7 @@ void menuAgregarVideojuego() {
     cout << longSpace << longTab << "╔════════════════════════════════════════════╗\n";
     cout << longTab << COLOR_SB << "║           ♦ 👾 Agregar Videojuego ♦        ║" << COLOR_RESET << endl;
     cout << longTab << "╚════════════════════════════════════════════╝\n";
-    cout << "♦ Nombre: ";
+    cout << longTab << "♦ Nombre: ";
     cin >> nombre;
     cout << longTab << "┌────────────────────────────────────────────┐" << endl;
     cout << longTab << "│              Selecciona Genero             │" << endl;
@@ -69,7 +69,7 @@ void menuAgregarVideojuego() {
     cout << longTab << "│               4. 🔰 OTRO                   │\n";
     cout << longTab << "│                                            │\n";
     cout << longTab << "└────────────────────────────────────────────┘" << endl;
-    cout << "❯ Opción: " << COLOR_RESET;
+    cout << longTab << "❯ Opción: " << COLOR_RESET;
     int type;
     cin >> type;
     switch (type) {
@@ -101,13 +101,16 @@ void menuAgregarVideojuego() {
 
 void menuObtenerJugadores() {
     system("clear");
-    cout << longSpace << longTab << "╔═════════════════════════════════════╗" << endl;
+    cout << longSpace << longTab << "╔═════════════════════════════════════╗" << COLOR_RESET << endl;
     cout << longTab << COLOR_SB << "║ 👥 Listado de Jugadores Registrados ║" << COLOR_RESET << endl;
-    cout << longTab << "╚═════════════════════════════════════╝" << endl;
-    int cantJ= sistema->getTopeJugadores();
+    cout << longTab <<  "╚═════════════════════════════════════╝" << COLOR_RESET << endl;
+    int cantJ = sistema->getTopeJugadores();
     DtJugador** losJugadores = sistema->obtenerJugadores(cantJ);
     for (int i = 0; i < cantJ; i++) {
-        cout << longTab << *losJugadores[i] << endl;
+        cout << longTab << "┌─────────────────────────────────────┐" << COLOR_RESET << endl;
+        cout << longTab << COLOR_LG << "│ ❯ Player #" << i+1 << "\t\t     ⦿ Online │" << COLOR_RESET << endl;
+        cout << longTab << "└─────────────────────────────────────┘" << COLOR_RESET << endl;
+        cout << *losJugadores[i] << endl;       
     }
     if (cantJ >= 1) {
         cout << longTab << COLOR_P << "┌─────────────────────────────────────┐" << COLOR_RESET << endl;
@@ -126,18 +129,22 @@ void menuObtenerJugadores() {
 
 void menuObtenerVideoJuegos() {
     system("clear");
-    cout << longSpace << longTab << COLOR_P << "╔══════════════════════════════════════╗" << COLOR_RESET << endl;
-    cout << longTab << COLOR_P << "║ 🎮 Listado de Videouegos Registrados ║" << COLOR_RESET << endl;
-    cout << longTab << COLOR_P << "╚══════════════════════════════════════╝" << COLOR_RESET << endl;
-    int cantVJ= sistema->getTopeJuego();
+    cout << longSpace << longTab << "╔══════════════════════════════════════╗" << COLOR_RESET << endl;
+    cout << longTab << COLOR_SB << "║ 🎮 Listado de Videouegos Registrados ║" << COLOR_RESET << endl;
+    cout << longTab << "╚══════════════════════════════════════╝" << COLOR_RESET << endl;
+    int cantVJ = sistema->getTopeJuegos();
+    int index = 0;
     DtJuego** losVideoJuegos = sistema->obtenerVideoJuegos(cantVJ);
     for (int i = 0; i < cantVJ; i++) {
-        cout << longTab << *losVideoJuegos[i] << endl;
+        cout << longTab << "┌──────────────────────────────────────┐" << COLOR_RESET << endl;
+        cout << longTab << COLOR_LG << "│ ❯ Game #" << i+1 << "\t\t\t       │" << COLOR_RESET << endl;
+        cout << longTab << "└──────────────────────────────────────┘" << COLOR_RESET << endl;
+        cout << *losVideoJuegos[i] << endl;
     }
     if (cantVJ >= 1) {
-        cout << longTab << COLOR_P << "┌─────────────────────────────────────┐" << COLOR_RESET << endl;
-        cout << longTab << COLOR_P << "│         📢 Fin del Listado!         │" << COLOR_RESET << endl;
-        cout << longTab << COLOR_P << "└─────────────────────────────────────┘" << COLOR_RESET << endl;
+        cout << longTab << COLOR_P << "┌──────────────────────────────────────┐" << COLOR_RESET << endl;
+        cout << longTab << COLOR_P << "│          📢 Fin del Listado!         │" << COLOR_RESET << endl;
+        cout << longTab << COLOR_P << "└──────────────────────────────────────┘" << COLOR_RESET << endl;
         system("sleep 5");
     } else {
         cout << longTab << COLOR_Y << "┌──────────────────────────────────────┐" << COLOR_RESET << endl;
@@ -173,7 +180,7 @@ void menuIniciarPartida()
   }
   catch (invalid_argument &e)
   {
-     cout << "\n"
+        cout << "\n"
              << longTab << COLOR_Y << "┌─────────────────────────────────────────┐" << COLOR_RESET << endl;
         cout << longTab << COLOR_Y << e.what() << COLOR_RESET << endl;
         cout << longTab << COLOR_Y << "└─────────────────────────────────────────┘" << COLOR_RESET << endl;
@@ -229,7 +236,10 @@ void welcomeBanner() {
     cout << longTab << "║" << COLOR_BW << "\t\t\t\t█░░░█░░░░░░░░░░▄▄░██░█" << COLOR_RESET << "                                ║" << endl;
     cout << longTab << "║" << COLOR_BW << "\t\t\t\t█░▀▀█▀▀░▄▀░▄▀░░▀▀░▄▄░█" << COLOR_RESET << "                                ║" << endl;
     cout << longTab << "║" << COLOR_BW << "\t\t\t\t█░░░▀░░░▄▄▄▄▄░░██░▀▀░█" << COLOR_RESET << "                                ║" << endl;
-    cout << longTab << "║" << COLOR_BW << "\t\t\t\t ▀▄▄▄▄▄▀     ▀▄▄▄▄▄▄▀" << COLOR_RESET << "                                 ║" << endl;
+    cout << longTab << "║" << COLOR_BW << "\t\t\t\t ▀▄▄▄▄▄▀     ▀▄▄▄▄▄▄▀" << COLOR_RESET << "                                 ║" << endl; 
+    //cout << longTab << "║                                                                                     ║" << endl;
+    //cout << longTab << "║" << COLOR_BW << "\t\t\t\t  █▀ ▀█▀ ▄▀█ █▀█ ▀█▀" << COLOR_RESET << "                                  ║" << endl;
+    //cout << longTab << "║" << COLOR_SB << "\t\t\t\t  ▄█  █  █▀█ █▀▄  █ " << COLOR_RESET << "                                  ║" << endl;
     cout << longTab << "╚═════════════════════════════════════════════════════════════════════════════════════╝" << endl;
     loadBar();
 }
@@ -245,13 +255,13 @@ void menuCustomDisplay() {
     cout << longTab << "║                                            ║\n";
     cout << longTab << "║                                            ║\n";
     cout << longTab << "║                                            ║\n";
-    cout << longTab << "║            1) Mover Arriba " << COLOR_BG << "[↑]" << COLOR_RESET << "             ║\n";
+    cout << longTab << "║            1) Mover " << COLOR_BG << "ARRIBA " << COLOR_RESET << "                ║\n";
     cout << longTab << "║                                            ║\n";
-    cout << longTab << "║            2) Mover Abajo " << COLOR_BG << "[↓]" << COLOR_RESET << "              ║\n";
+    cout << longTab << "║            2) Mover " << COLOR_BG << "ABAJO " << COLOR_RESET << "                 ║\n";
     cout << longTab << "║                                            ║\n";
-    cout << longTab << "║            3) Mover Izquierda " << COLOR_BG << "[←]" << COLOR_RESET << "          ║\n";
+    cout << longTab << "║            3) Mover " << COLOR_BG << "IZQUIERDA " << COLOR_RESET << "             ║\n";
     cout << longTab << "║                                            ║\n";
-    cout << longTab << "║            4) Mover Derecha " << COLOR_BG << "[→]" << COLOR_RESET << "            ║\n";
+    cout << longTab << "║            4) Mover " << COLOR_BG << "DERECHA " << COLOR_RESET << "               ║\n";
     cout << longTab << "║                                            ║\n";
     cout << longTab << "║            5) Finalizar                    ║\n";
     cout << longTab << "║                                            ║\n";
@@ -341,7 +351,7 @@ void menuDisplay() {
 /********** Barra de Carga 2 **********/
 
 void closeBar(float progress) {
-    float progressBar=0;
+    float progressBar = 0;
     cout << endl;
     while (progressBar < 1.1) {
         int barWidth = 5;
@@ -365,19 +375,42 @@ void closeBar(float progress) {
     system("clear");
 }
 
+/********** Barra de Estado **********/
+
+void statusBar() {
+    cout << longSpace << longTab << BG_GRAY << "                                     ➖ 🔲 ❌ " << COLOR_RESET << endl;
+    // current date and time on the current system
+    time_t now = time(0);
+    // convert now to string form
+    char* date_time = ctime(&now);
+    cout << longTab << BG_BLACK << COLOR_LG << "⦿ Online              " << date_time << COLOR_RESET;
+}
+
 /********** Mensaje de inicio y Carga **********/
 
 void initialization() {
-    progress=0.25;
-    cout << longSpace << longTab << COLOR_P << "┌─────────────────────────────────────────────┐" << COLOR_RESET << endl;
-    cout << longTab << COLOR_P << "│  ⏳ Iniciando Sesión, Por Favor Espere...   │" << COLOR_RESET << endl;
-    cout << longTab << COLOR_P << "└─────────────────────────────────────────────┘" << COLOR_RESET << endl;
-    cout << "\n"
-         << longTab << COLOR_P << "   ──▒▒▒▒▒▒" << COLOR_RESET << COLOR_R << "──▒▒▒▒▒▒" << COLOR_RESET << COLOR_SB << "──▒▒▒▒▒▒" << COLOR_RESET << COLOR_O << "──▒▒▒▒▒▒" << COLOR_RESET << COLOR_Y << "───▄████▄" << COLOR_RESET << endl;
-    cout << longTab << COLOR_P << "   ─▒─▄▒─▄▒" << COLOR_RESET << COLOR_R << "─▒─▄▒─▄▒" << COLOR_RESET << COLOR_SB << "─▒─▄▒─▄▒" << COLOR_RESET << COLOR_O << "─▒─▄▒─▄▒" << COLOR_RESET << COLOR_Y << "──███▄█▀" << COLOR_RESET << endl;
-    cout << longTab << COLOR_P << "   ─▒▒▒▒▒▒▒" << COLOR_RESET << COLOR_R << "─▒▒▒▒▒▒▒" << COLOR_RESET << COLOR_SB << "─▒▒▒▒▒▒▒" << COLOR_RESET << COLOR_O << "─▒▒▒▒▒▒▒" << COLOR_RESET << COLOR_Y << "─▐████──█─█" << COLOR_RESET << endl;
-    cout << longTab << COLOR_P << "   ─▒▒▒▒▒▒▒" << COLOR_RESET << COLOR_R << "─▒▒▒▒▒▒▒" << COLOR_RESET << COLOR_SB << "─▒▒▒▒▒▒▒" << COLOR_RESET << COLOR_O << "─▒▒▒▒▒▒▒" << COLOR_RESET << COLOR_Y << "──█████▄" << COLOR_RESET << endl;
-    cout << longTab << COLOR_P << "   ─▒─▒─▒─▒" << COLOR_RESET << COLOR_R << "─▒─▒─▒─▒" << COLOR_RESET << COLOR_SB << "─▒─▒─▒─▒" << COLOR_RESET << COLOR_O << "─▒─▒─▒─▒" << COLOR_RESET << COLOR_Y << "───▀████▀" << COLOR_RESET << endl;
+    progress = 0.25;
+    cout << longSpace << longTab << COLOR_P << "┌────────────────────────────────────────────┐" << COLOR_RESET << endl;
+    cout << longTab << COLOR_P << "│  ⏳ Iniciando Sesión, Por Favor Espere...  │" << COLOR_RESET << endl;
+    cout << longTab << COLOR_P << "├────────────────────────────────────────────┤" << COLOR_RESET << endl;    
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│ ──▒▒▒▒▒▒" << COLOR_R << "──▒▒▒▒▒▒" << COLOR_SB << "──▒▒▒▒▒▒" << COLOR_O << "──▒▒▒▒▒▒" << COLOR_Y << "───▄████▄  " COLOR_P "│" << COLOR_RESET << endl;
+    cout << longTab << COLOR_P << "│ ─▒─▄▒─▄▒" << COLOR_R << "─▒─▄▒─▄▒" << COLOR_SB << "─▒─▄▒─▄▒" << COLOR_O << "─▒─▄▒─▄▒" << COLOR_Y << "──███▄█▀   " COLOR_P "│" << COLOR_RESET << endl;
+    cout << longTab << COLOR_P << "│ ─▒▒▒▒▒▒▒" << COLOR_R << "─▒▒▒▒▒▒▒" << COLOR_SB << "─▒▒▒▒▒▒▒" << COLOR_O << "─▒▒▒▒▒▒▒" << COLOR_Y << "─▐████──█─█" COLOR_P "│" << COLOR_RESET << endl;
+    cout << longTab << COLOR_P << "│ ─▒▒▒▒▒▒▒" << COLOR_R << "─▒▒▒▒▒▒▒" << COLOR_SB << "─▒▒▒▒▒▒▒" << COLOR_O << "─▒▒▒▒▒▒▒" << COLOR_Y << "──█████▄   " COLOR_P "│" << COLOR_RESET << endl;
+    cout << longTab << COLOR_P << "│ ─▒─▒─▒─▒" << COLOR_R << "─▒─▒─▒─▒" << COLOR_SB << "─▒─▒─▒─▒" << COLOR_O << "─▒─▒─▒─▒" << COLOR_Y << "───▀████▀  " COLOR_P "│" << COLOR_RESET << endl;
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "└────────────────────────────────────────────┘" << endl;  
     closeBarSpace = "";
     closeBar(progress);
 }
@@ -387,31 +420,51 @@ void initialization() {
 void menuCargarDatos() {
     sistema->cargarDatosPredeterminados();
     system("clear");
-    progress=0.25;
-    cout << longSpace << longTab << COLOR_P << "┌──────────────────────────────────────────────────┐" << COLOR_RESET << endl;
-    cout << longTab << COLOR_P << "│ ⏳ Cargando Datos de Prueba, por favor Espere... │" << COLOR_RESET << endl;
-    cout << longTab << COLOR_P << "└──────────────────────────────────────────────────┘" << COLOR_RESET << endl;
-    cout << "\n"
-         << longTab << COLOR_P << "\t\t ▄▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▄" << COLOR_RESET << endl;
-    cout << longTab << COLOR_P << "\t\t█░░░█░░░░░░░░░░▄▄░██░█" << COLOR_RESET << endl;
-    cout << longTab << COLOR_P << "\t\t█░▀▀█▀▀░▄▀░▄▀░░▀▀░▄▄░█" << COLOR_RESET << endl;
-    cout << longTab << COLOR_P << "\t\t█░░░▀░░░▄▄▄▄▄░░██░▀▀░█" << COLOR_RESET << endl;
-    cout << longTab << COLOR_P << "\t\t ▀▄▄▄▄▄▀     ▀▄▄▄▄▄▄▀" << COLOR_RESET << endl;
-    closeBarSpace = "     ";
+    progress = 0.25;
+    cout << longSpace << longTab << COLOR_P << "┌────────────────────────────────────────────┐" << COLOR_RESET << endl;
+    cout << longTab << COLOR_P << "│   ⏳ Cargando Datos, por favor Espere...   │" << COLOR_RESET << endl;
+    cout << longTab << COLOR_P << "├────────────────────────────────────────────┤" << COLOR_RESET << endl;    
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│" << COLOR_P << "             ▄▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▄           " << COLOR_P << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_P << "│" << COLOR_P << "            █░░░█░░░░░░░░░░▄▄░██░█          " << COLOR_P << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_P << "│" << COLOR_P << "            █░▀▀█▀▀░▄▀░▄▀░░▀▀░▄▄░█          " << COLOR_P << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_P << "│" << COLOR_P << "            █░░░▀░░░▄▄▄▄▄░░██░▀▀░█          " << COLOR_P << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_P << "│" << COLOR_P << "             ▀▄▄▄▄▄▀     ▀▄▄▄▄▄▄▀           " << COLOR_P << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "└────────────────────────────────────────────┘" << endl;
+    closeBarSpace = "";
     closeBar(progress);
-    cout << longSpace << longTab << COLOR_G << "┌─────────────────────────────────────────────┐" << COLOR_RESET << endl;
-    cout << longTab << COLOR_G << "│ [✔] Datos de Prueba Cargados Correctamente! │" << COLOR_RESET << endl;
-    cout << longTab << COLOR_G << "└─────────────────────────────────────────────┘" << COLOR_RESET << endl;
-    cout << "\n"
-         << longTab << COLOR_G << "\t\t         ▄▄" << COLOR_RESET << endl;
-    cout << longTab << COLOR_G << "\t\t        █░█" << COLOR_RESET << endl;
-    cout << longTab << COLOR_G << "\t\t       ▄▀░█" << COLOR_RESET << endl;
-    cout << longTab << COLOR_G << "\t\t████▄▄▄▀░░▀▀▀▀▄" << COLOR_RESET << endl;
-    cout << longTab << COLOR_G << "\t\t████░░░░░░░░░░█" << COLOR_RESET << endl;
-    cout << longTab << COLOR_G << "\t\t████░░░░░░░░░░█" << COLOR_RESET << endl;
-    cout << longTab << COLOR_G << "\t\t████▄▄▄░░░░░░░█" << COLOR_RESET << endl;
-    cout << longTab << COLOR_G << "\t\t▀▀▀▀   ▀▀▀▀▀▀▀" << COLOR_RESET << endl;
-
+    cout << longSpace << longTab << COLOR_G << "┌────────────────────────────────────────────┐" << COLOR_RESET << endl;
+    cout << longTab << COLOR_G << "│      [✔] Datos Cargados Correctamente!     │" << COLOR_RESET << endl;
+    cout << longTab << COLOR_G << "├────────────────────────────────────────────┤" << COLOR_RESET << endl;  
+    cout << longTab << COLOR_G << "│                                            │\n";
+    cout << longTab << COLOR_G << "│                                            │\n";
+    cout << longTab << COLOR_G << "│                                            │\n";
+    cout << longTab << COLOR_G << "│                                            │\n";
+    cout << longTab << COLOR_G << "│" << COLOR_G << "                      ▄▄                    " << COLOR_RESET << COLOR_G << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_G << "│" << COLOR_G << "                     █░█                    " << COLOR_RESET << COLOR_G << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_G << "│" << COLOR_G << "                    ▄▀░█                    " << COLOR_RESET << COLOR_G << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_G << "│" << COLOR_G << "             ████▄▄▄▀░░▀▀▀▀▄                " << COLOR_RESET << COLOR_G << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_G << "│" << COLOR_G << "             ████░░░░░░░░░░█                " << COLOR_RESET << COLOR_G << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_G << "│" << COLOR_G << "             ████░░░░░░░░░░█                " << COLOR_RESET << COLOR_G << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_G << "│" << COLOR_G << "             ████▄▄▄░░░░░░░█                " << COLOR_RESET << COLOR_G << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_G << "│" << COLOR_G << "             ▀▀▀▀   ▀▀▀▀▀▀▀                 " << COLOR_RESET << COLOR_G << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_G << "│                                            │\n";
+    cout << longTab << COLOR_G << "│                                            │\n";
+    cout << longTab << COLOR_G << "│                                            │\n";
+    cout << longTab << COLOR_G << "│                                            │\n";
+    cout << longTab << COLOR_G << "└────────────────────────────────────────────┘" << endl;
+    closeBarSpace = "";
     system("sleep 2");
 }
 
@@ -419,34 +472,35 @@ void menuCargarDatos() {
 
 void exit() {
     system("clear");
-    progress=1;
+    progress = 1;   
     cout << longSpace << longTab << COLOR_P << "┌────────────────────────────────────────────┐" << COLOR_RESET << endl;
     cout << longTab << COLOR_P << "│  ❌ Cerrando Sesión, Por Favor Espere...   │" << COLOR_RESET << endl;
-    cout << longTab << COLOR_P << "└────────────────────────────────────────────┘" << COLOR_RESET << endl;
-    cout << "\n"
-         << longTab << COLOR_R << "    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" << COLOR_RESET << endl;
-    cout << longTab << COLOR_R << "    ░░█▀▀░▄▀█░█▀▄▀█░█▀▀░░░█▀█░█░█░█▀▀░█▀█░░" << COLOR_RESET << endl;
-    cout << longTab << COLOR_R << "    ░░█▄█░█▀█░█░▀░█░██▄░░░█▄█░▀▄▀░██▄░█▀▄░░" << COLOR_RESET << endl;
-    cout << longTab << COLOR_R << "    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" << COLOR_RESET << endl;
+    cout << longTab << COLOR_P << "├────────────────────────────────────────────┤" << COLOR_RESET << endl;    
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│" << COLOR_R << "   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  " << COLOR_P << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_P << "│" << COLOR_R << "   ░░█▀▀░▄▀█░█▀▄▀█░█▀▀░░░█▀█░█░█░█▀▀░█▀█░░  " << COLOR_P << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_P << "│" << COLOR_R << "   ░░█▄█░█▀█░█░▀░█░██▄░░░█▄█░▀▄▀░██▄░█▀▄░░  " << COLOR_P << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_P << "│" << COLOR_R << "   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  " << COLOR_P << "│\n" << COLOR_RESET;
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "│                                            │\n";
+    cout << longTab << COLOR_P << "└────────────────────────────────────────────┘" << endl;
     closeBarSpace = "";
     closeBar(progress);
-}
-
-/********** Barra de Estado **********/
-
-void statusBar() {
-    // current date and time on the current system
-    time_t now = time(0);
-    // convert now to string form
-    char* date_time = ctime(&now);
-    cout << longTab << BG_BLACK << COLOR_G << "⦿ Online              " << date_time << COLOR_RESET;
 }
 
 /********** Menu Principal (Consola) **********/
 
 void menu() {
     system("clear");
-    cout << longSpace << longTab << BG_GRAY << "                                     ➖ 🔲 ❌ " << COLOR_RESET << endl;
     statusBar();
     cout << longTab << COLOR_G << "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" << COLOR_RESET << endl;
     cout << longTab << COLOR_SB << "░░░░░░█▀▀░▄▀█░█▀▄▀█░█▀▀░█░░░▄▀█░█▄ █░█▀▄░░░░░░" << COLOR_RESET << endl;
@@ -480,16 +534,27 @@ void menu() {
 
 int main() {
     sistema = new Sistema();
-    //welcomeBanner();
-    //menuDisplay();
+    welcomeBanner();
+    menuDisplay();
     initialization();
     menu();
+    bool data = true;
     int opcion;
     cin >> opcion;
     while (opcion != 7) {
         switch (opcion) {
             case 0:
-                menuCargarDatos();
+                if (data)
+                {
+                    menuCargarDatos();
+                    data = false;
+                } else {
+                    cout << "\n"
+                         << longTab << COLOR_Y << "┌────────────────────────────────────────────┐" << COLOR_RESET << endl;
+                    cout << longTab << COLOR_Y << "│   🔔 Ya Has Cargado los Datos de Prueba!   │" << COLOR_RESET << endl;
+                    cout << longTab << COLOR_Y << "└────────────────────────────────────────────┘" << COLOR_RESET << endl; 
+                    system("sleep 2");   
+                }                                   
                 break;
             case 1:
                 menuAgregarJugador();

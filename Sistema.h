@@ -15,7 +15,7 @@ class Sistema{
         Jugador *jugadores[MAX_JUGADORES];
         int topeJugadores;
         Juego *juegos[MAX_VIDEOJUEGOS];
-        int topeJuego;
+        int topeJuegos;
         Partida* partida[MAX_PARTIDAS];
         int topePartida;
     public:
@@ -24,7 +24,7 @@ class Sistema{
         bool checkingNickname(string nickname);
         bool checkingNombre(string nombre);
         int getTopeJugadores();
-        int getTopeJuego();
+        int getTopeJuegos();
         int getTopePartida();
         void agregarJugador(int password, int edad, string nickname);
         void iniciarPartida(string nickname, string name, DtPartida* datos);
