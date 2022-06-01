@@ -1,10 +1,13 @@
-# PAV-Laboratorio1-2022
+# Biblioteca de Videojuegos [C++] 🎮👾
 
-[![FING Logo](https://www.fing.edu.uy/sites/default/files/inline-images/logofing.png)](https://www.fing.edu.uy/sites/default/files/inline-images/logofing.png)
+> ### Tecnólogo en Informática - Facultad de Ingeniería UDELAR
+> ### Tarea Obligatoria de Programación Avanzada - Tercer Semestre.
+> > ### Introducción a la Programación Orientada a Objetos.
 
-## Tecnólogo en Informática
+## Detalles
 
-### Tarea Obligatoria de Programación Avanzada - Tercer Semestre.
+- ### Programación Orientada a Objetos
+- ### Lenguaje C++
 
 #### Participantes: 
 
@@ -16,3 +19,7 @@
 #### Turno: 
 
 - Matutino
+
+---
+
+[![FING Logo](https://www.fing.edu.uy/sites/default/files/inline-images/logofing.png)](https://www.fing.edu.uy/sites/default/files/inline-images/logofing.png)
