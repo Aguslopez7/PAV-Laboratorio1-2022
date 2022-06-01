@@ -2,11 +2,10 @@
 
 > ### Tecnólogo en Informática - Facultad de Ingeniería UDELAR
 > ### Tarea Obligatoria de Programación Avanzada - Tercer Semestre.
-> ### Introducción a la Programación Orientada a Objetos.
 
 ## Detalles
 
-- ### Programación Orientada a Objetos
+- ### Introducción a la Programación Orientada a Objetos
 - ### Lenguaje C++
 
 #### Participantes: 
