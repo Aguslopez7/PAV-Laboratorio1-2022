@@ -2,6 +2,8 @@
 
 [![FING Logo](https://www.fing.edu.uy/sites/default/files/inline-images/logofing.png)](https://www.fing.edu.uy/sites/default/files/inline-images/logofing.png)
 
+## Tecnólogo en Informática
+
 ### Tarea Obligatoria de Programación Avanzada - Tercer Semestre.
 
 #### Participantes: 
