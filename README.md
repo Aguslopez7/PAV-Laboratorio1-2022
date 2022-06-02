@@ -8,7 +8,7 @@
 - ### Introducción a la Programación Orientada a Objetos
 - ### Lenguaje C++
 
-#### Participantes: 
+#### Integrantes: 
 
 - Agustina Raimundez - 5.262.023-2 
 - Mateo Tambasco - 5.117.982-8 
